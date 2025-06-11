@@ -1,9 +1,9 @@
 package com.game.repository;
 
 import com.game.entity.Player;
+import jakarta.annotation.PreDestroy; // the annotation package was changed due to developers moving it
 import org.springframework.stereotype.Repository;
 
-import javax.annotation.PreDestroy;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,7 +43,6 @@ public class PlayerRepositoryDB implements IPlayerRepository {
     public void delete(Player player) {
 
     }
-
     @PreDestroy
     public void beforeStop() {
 
