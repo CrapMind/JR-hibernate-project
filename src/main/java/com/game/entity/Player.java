@@ -3,8 +3,15 @@ package com.game.entity;
 import jakarta.persistence.*;
 
 import java.util.Date;
+
+@NamedQueries({
+        @NamedQuery(name = "Player_GetAllCount", query = "select count(*) from Player")
+})
+
+
 @Entity
 @Table(name = "player", schema = "rpg")
+
 public class Player {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -108,5 +115,19 @@ public class Player {
 
     public void setLevel(Integer level) {
         this.level = level;
+    }
+
+    @Override
+    public String toString() {
+        return "Player{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", title='" + title + '\'' +
+                ", race=" + race +
+                ", profession=" + profession +
+                ", birthday=" + birthday +
+                ", banned=" + banned +
+                ", level=" + level +
+                '}';
     }
 }
