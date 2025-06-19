@@ -7,6 +7,8 @@ import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.query.NativeQuery;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -123,9 +125,12 @@ public class PlayerRepositoryDB implements IPlayerRepository {
             throw new RuntimeException("Database error while deleting player", e);
         }
     }
-
     @PreDestroy
     public void beforeStop() {
         sessionFactory.close();
+    }
+
+    public SessionFactory getSessionFactory() {
+        return sessionFactory;
     }
 }
